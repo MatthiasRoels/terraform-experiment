@@ -50,6 +50,9 @@ Temporary Items
 *.tfstate
 *.tfstate.*
 
+# terraform variables
+terraform.tfvars
+
 # Crash log files
 crash.log
 

@@ -13,8 +13,8 @@ output "subnets_names" {
   description = "The names of the subnets being created"
 }
 
-output "subnet_ips" {
-  value = module.vpc.subnet_ips
+output "subnets_ips" {
+  value = module.vpc.subnets_ips
   description = "The IPs and CIDRs of the subnets"
 }
 
@@ -23,8 +23,8 @@ output "subnets_self_links" {
   description = "The self-links of the subnets"
 }
 
-output "subnet_regions" {
-  value = module.vpc.subnet_regions
+output "subnets_regions" {
+  value = module.vpc.subnets_regions
   description = "The regions where the subnets are created"
 }
 
