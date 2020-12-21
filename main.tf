@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "google" {
-  project     = "${var.project_id}"
+  project     = var.project_id
 }
 
 # Enable services in newly created GCP Project.
@@ -26,4 +26,5 @@ module "networks" {
 module "compute" {
   source = "./compute"
   zone = var.zone
+  network_name = var.network_name
 }
