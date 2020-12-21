@@ -10,7 +10,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    network = var.network-name
+    network = var.network_name
     access_config {
     }
   }

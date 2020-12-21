@@ -1,5 +1,5 @@
 output "network-name" {
-  value = module.vpc.metwork_name
+  value = module.vpc.network_name
   description = "The name of the VPC network"
 }
 
@@ -8,23 +8,23 @@ output "network_self_link" {
   description = "The URI of the VPC network"
 }
 
-output "subset_names" {
-  value = module.vpc.subset_names
+output "subnets_names" {
+  value = module.vpc.subnets_names
   description = "The names of the subnets being created"
 }
 
-output "subset_ips" {
-  value = module.vpc.subset_ips
+output "subnet_ips" {
+  value = module.vpc.subnet_ips
   description = "The IPs and CIDRs of the subnets"
 }
 
-output "subnets_self_link" {
-  value = module.vpc.subnets_self_link
+output "subnets_self_links" {
+  value = module.vpc.subnets_self_links
   description = "The self-links of the subnets"
 }
 
-output "subset_regions" {
-  value = module.vpc.subset_regions
+output "subnet_regions" {
+  value = module.vpc.subnet_regions
   description = "The regions where the subnets are created"
 }
 
