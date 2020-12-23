@@ -1,5 +1,5 @@
 resource "google_compute_instance" "vm_instance" {
-  name         = "GKE-bastion"
+  name         = "gke-bastion-1"
   machine_type = "e2-micro"
   zone = var.zone
 
