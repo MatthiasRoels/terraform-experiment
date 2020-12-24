@@ -12,7 +12,7 @@ module "vpc" {
 
 /* NAT config */
 resource "google_compute_router" "default_router" {
-  name    = "default_router-1"
+  name    = "default-router-1"
   project = var.project_id
   region  = var.region
   network = module.vpc.network_self_link
@@ -37,13 +37,26 @@ resource "google_compute_router_nat" "default_nat" {
 
 /* Firewall rules */
 
+//   Ranges for default firewall rules.
+data "google_netblock_ip_ranges" "legacy_health_checkers" {
+  range_type = "legacy-health-checkers"
+}
+
+data "google_netblock_ip_ranges" "health_checkers" {
+  range_type = "health-checkers"
+}
+
+data "google_netblock_ip_ranges" "iap_forwarders" {
+  range_type = "iap-forwarders"
+}
+
 /*
   Allow ssh connections from the IAP (Identity Aware Proxy) CIDR block
   This rules will prevent public SSH traffic and only allow authorized traffic
   through IAP
 */
-resource "google_compute_firewall" "ingress_allow_ssh-through-iap" {
-  name    = join("-", [module.vpc.network_name, "ingress-allow-ssh-through-iap"])
+resource "google_compute_firewall" "allow_ingress_from_iap" {
+  name    = join("-", [module.vpc.network_name, "allow-ingress-from-iap"])
   network = module.vpc.network_name
   project = var.project_id
 
@@ -56,7 +69,7 @@ resource "google_compute_firewall" "ingress_allow_ssh-through-iap" {
   // Cloud IAP's TCP forwarding netblock
   source_ranges = concat(data.google_netblock_ip_ranges.iap_forwarders.cidr_blocks_ipv4)
 
-  target_tags = ["ingress-allow-ssh"]
+  target_tags = ["allow-ingress-from-iap"]
 }
 
 /*

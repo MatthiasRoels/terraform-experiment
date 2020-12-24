@@ -10,8 +10,8 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    network = var.network_name
-    access_config {
-    }
+    subnetwork = var.subnetwork_name
   }
+
+  tags = ["allow-ingress-from-iap"]
 }

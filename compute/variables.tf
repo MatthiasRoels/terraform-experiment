@@ -4,7 +4,7 @@ variable "zone" {
   default     = "europe-west1-b"
 }
 
-variable "network_name" {
-  description = "Name of the VPC network"
+variable "subnetwork_name" {
+  description = "Name of the VPC subnetwork"
   type = string
 }
