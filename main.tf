@@ -26,5 +26,6 @@ module "networks" {
 module "compute" {
   source = "./compute"
   zone = var.zone
+  network = var.network_name
   subnetwork_name = lookup(element(var.subnets, 0), "subnet_name")
 }

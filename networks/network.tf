@@ -57,8 +57,8 @@ data "google_netblock_ip_ranges" "iap_forwarders" {
 */
 resource "google_compute_firewall" "allow_ingress_from_iap" {
   name    = join("-", [module.vpc.network_name, "allow-ingress-from-iap"])
-  network = module.vpc.network_name
   project = var.project_id
+  network = module.vpc.network_name
 
   allow {
     protocol = "tcp"
